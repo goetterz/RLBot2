@@ -1,0 +1,28 @@
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_setup.py:_flush():68] Current SDK version is 0.19.10
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_setup.py:_flush():68] Configure stats pid to 1307198
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_setup.py:_flush():68] Loading settings from /home/goetterz/.config/wandb/settings
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_setup.py:_flush():68] Loading settings from /home/goetterz/RLBot2/RLBot2/wandb/settings
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /home/goetterz/RLBot2/RLBot2/wandb/offline-run-20250424_023405-wzha4lya/logs/debug.log
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /home/goetterz/RLBot2/RLBot2/wandb/offline-run-20250424_023405-wzha4lya/logs/debug-internal.log
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:init():852] calling init triggers
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'n_proc': 32, 'min_inference_size': 29, 'timestep_limit': 1000000000, 'exp_buffer_size': 1500000, 'ts_per_iteration': 500000, 'standardize_returns': True, 'standardize_obs': True, 'policy_layer_sizes': [1024, 1024, 768, 512, 256], 'critic_layer_sizes': [1024, 1024, 768, 512, 256], 'ppo_epochs': 4, 'ppo_batch_size': 500000, 'ppo_minibatch_size': 100000, 'ppo_ent_coef': 0.001, 'ppo_clip_range': 0.2, 'gae_lambda': 0.95, 'gae_gamma': 0.99, 'policy_lr': 0.0002, 'critic_lr': 0.0002, 'shm_buffer_size': 8192, '_wandb': {}}
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:init():893] starting backend
+2025-04-24 02:34:05,196 INFO    MainThread:1307198 [wandb_init.py:init():897] sending inform_init request
+2025-04-24 02:34:05,205 INFO    MainThread:1307198 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-04-24 02:34:05,206 INFO    MainThread:1307198 [wandb_init.py:init():907] backend started and connected
+2025-04-24 02:34:05,208 INFO    MainThread:1307198 [wandb_init.py:init():1002] updated telemetry
+2025-04-24 02:34:05,228 INFO    MainThread:1307198 [wandb_init.py:init():1026] communicating run to backend with 90.0 second timeout
+2025-04-24 02:34:05,348 INFO    MainThread:1307198 [wandb_init.py:init():1101] starting run threads in backend
+2025-04-24 02:34:05,463 INFO    MainThread:1307198 [wandb_run.py:_console_start():2566] atexit reg
+2025-04-24 02:34:05,463 INFO    MainThread:1307198 [wandb_run.py:_redirect():2414] redirect: wrap_raw
+2025-04-24 02:34:05,463 INFO    MainThread:1307198 [wandb_run.py:_redirect():2483] Wrapping output streams.
+2025-04-24 02:34:05,463 INFO    MainThread:1307198 [wandb_run.py:_redirect():2506] Redirects installed.
+2025-04-24 02:34:05,471 INFO    MainThread:1307198 [wandb_init.py:init():1147] run started, returning control to user process
+2025-04-24 02:38:50,718 INFO    MainThread:1307198 [wandb_run.py:_finish():2314] finishing run rlgym-ppo/wzha4lya
+2025-04-24 02:38:50,718 INFO    MainThread:1307198 [wandb_run.py:_atexit_cleanup():2531] got exitcode: 0
+2025-04-24 02:38:50,719 INFO    MainThread:1307198 [wandb_run.py:_restore():2513] restore
+2025-04-24 02:38:50,723 INFO    MainThread:1307198 [wandb_run.py:_restore():2519] restore done
+2025-04-24 02:38:50,739 INFO    MainThread:1307198 [wandb_run.py:_footer_history_summary_info():4160] rendering history
+2025-04-24 02:38:50,740 INFO    MainThread:1307198 [wandb_run.py:_footer_history_summary_info():4192] rendering summary

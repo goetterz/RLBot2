@@ -1,0 +1,16 @@
+{"time":"2025-04-24T02:34:05.236495642-05:00","level":"INFO","msg":"stream: starting","core version":"0.19.10","symlink path":"/home/goetterz/RLBot2/RLBot2/wandb/offline-run-20250424_023405-wzha4lya/logs/debug-core.log"}
+{"time":"2025-04-24T02:34:05.344564521-05:00","level":"WARN","msg":"GraphQL client is nil, skipping feature loading"}
+{"time":"2025-04-24T02:34:05.346007246-05:00","level":"INFO","msg":"created new stream","id":"wzha4lya"}
+{"time":"2025-04-24T02:34:05.346065328-05:00","level":"INFO","msg":"stream: started","id":"wzha4lya"}
+{"time":"2025-04-24T02:34:05.346054416-05:00","level":"INFO","msg":"handler: started","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:34:05.346115742-05:00","level":"INFO","msg":"sender: started","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:34:05.346170614-05:00","level":"INFO","msg":"writer: Do: started","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:34:05.351734265-05:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-24T02:38:50.733504826-05:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-24T02:38:50.73372112-05:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-24T02:38:50.734704872-05:00","level":"INFO","msg":"handler: operation stats","stats":{}}
+{"time":"2025-04-24T02:38:50.741880791-05:00","level":"INFO","msg":"stream: closing","id":"wzha4lya"}
+{"time":"2025-04-24T02:38:50.741905657-05:00","level":"INFO","msg":"handler: closed","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:38:50.741915278-05:00","level":"INFO","msg":"writer: Close: closed","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:38:50.742011233-05:00","level":"INFO","msg":"sender: closed","stream_id":"wzha4lya"}
+{"time":"2025-04-24T02:38:50.742760926-05:00","level":"INFO","msg":"stream: closed","id":"wzha4lya"}

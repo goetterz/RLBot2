@@ -1,0 +1,4 @@
+rlgym_compat
+rlgym-sim
+numpy
+torch
