@@ -4,6 +4,7 @@ from rlgym_sim.utils.reward_functions import RewardFunction
 from rlgym_sim.utils import common_values
 from rlgym_ppo.util import MetricsLogger
 
+
 class SpeedTowardBallReward(RewardFunction):
     def __init__(self):
         super().__init__()
@@ -74,6 +75,30 @@ class AirReward(RewardFunction):
         return float(not player.on_ground)
 
 
+class VelocityBallToGoalReward(RewardFunction):
+    def __init__(self):
+        super().__init__()
+        
+    def reset(self, initial_state: GameState):
+        pass
+        
+    def get_reward(self, player, state: GameState, previous_action: np.ndarray) -> float:
+        # Get the ball's velocity
+        ball_vel = state.ball.linear_velocity
+        
+        # Get the target goal's position based on player's team
+        if player.team_num == 0:  # Blue team - target orange goal (positive y)
+            goal_direction = np.array([0, 1, 0])
+        else:  # Orange team - target blue goal (negative y)
+            goal_direction = np.array([0, -1, 0])
+        
+        # Compute the component of the ball's velocity toward the goal
+        vel_toward_goal = np.dot(ball_vel, goal_direction)
+        
+        # Normalize by max ball speed to keep rewards in a reasonable range
+        return float(vel_toward_goal / common_values.BALL_MAX_SPEED)
+
+
 class ExampleLogger(MetricsLogger):
     def _collect_metrics(self, game_state: GameState) -> list:
         return [game_state.players[0].car_data.linear_velocity,
@@ -116,10 +141,11 @@ def build_rocketsim_env():
     # Early-stage focused rewards using the from_zipped format
     reward_fn = CombinedReward.from_zipped(
         # Format is (func, weight)
-        (EventReward(touch=1, team_goal=0, concede=0, demo=0), 50.0),  # Big reward for ball touches
-        (SpeedTowardBallReward(), 5.0),  # Incentivize moving toward the ball
-        (FaceBallReward(), 1.0),  # Face the ball to avoid backward driving
-        (AirReward(), 0.15)  # Encourage jumping/aerial play
+        (EventReward(touch=0.25, team_goal=1, concede=-1, demo=0), 20.0),  # Reduced touch reward, added moderate goal rewards
+        (VelocityBallToGoalReward(), 3.0),  # Reward for moving the ball toward the goal
+        (SpeedTowardBallReward(), 1.0),  # Reduced relative to VelocityBallToGoalReward
+        (FaceBallReward(), 0.5),  # Face the ball to avoid backward driving
+        (AirReward(), 0.25)  # Small encouragement for aerials
     )
 
     # Create RandomState state setter with recommended settings
@@ -171,12 +197,12 @@ if __name__ == "__main__":
                   min_inference_size=min_inference_size,
                   metrics_logger=metrics_logger,
                   render=False,
-                  ppo_batch_size=50_000,  # Double the original batch size
+                  ppo_batch_size=100_000,  # Double the original batch size
                   policy_layer_sizes=[1024, 1024, 768, 512, 256],  # Keep original large network
                   critic_layer_sizes=[1024, 1024, 768, 512, 256],  # Keep original large network
-                  ts_per_iteration=50_000,  # Match with batch size
-                  exp_buffer_size=150_000,  # Double the original buffer size
-                  ppo_minibatch_size=25_000,  # Smaller division for more gradient updates
+                  ts_per_iteration=100_000,  # Match with batch size
+                  exp_buffer_size=300_000,  # Double the original buffer size
+                  ppo_minibatch_size=50_000,  # Smaller division for more gradient updates
                   ppo_ent_coef=0.001,
                   ppo_epochs=3,  # Increased for better convergence
                   policy_lr=2e-4,
@@ -187,6 +213,6 @@ if __name__ == "__main__":
                   checkpoints_save_folder=checkpoint_dir,
                   # checkpoint_load_folder=latest_checkpoint_dir,  # Uncomment to load checkpoint
                   add_unix_timestamp=False,
-                  timestep_limit=48_000_000,  # Doubled training limit
+                  timestep_limit=200_000_000,  # Doubled training limit
                   log_to_wandb=False)
     learner.learn()
